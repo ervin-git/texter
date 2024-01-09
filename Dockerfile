@@ -37,8 +37,10 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     # tz
     TZ=America/Chicago
 
-RUN apk add --update --no-cache \
-    tini
+RUN apt-get update && \
+    apt-get install -yq --no-install-recommends tini && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 WORKDIR /code
 
