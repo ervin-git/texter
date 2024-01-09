@@ -20,7 +20,6 @@ def distance(a: str, b: str) -> int:
             case " ":
                 distance += max(change_counter.values())
                 change_counter = {"+": 0, "-": 0}
-                pass
             # change case, update the change counter dict
             case _:
                 change_counter[change] += 1
