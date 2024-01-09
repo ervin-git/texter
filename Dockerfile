@@ -1,5 +1,5 @@
 # build image
-FROM python:3.11 as builder
+FROM python:3.12 as builder
 
 WORKDIR /code
 
@@ -22,7 +22,7 @@ COPY ./pyproject.toml ./poetry.lock ./
 RUN poetry install --compile --no-interaction --no-ansi --no-root -vvv $(test "$(echo $ENV | awk '{print tolower($0)}')" != "dev" && echo "--only main")
 
 # runtime image
-FROM python:3.11 as runtime
+FROM python:3.12 as runtime
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
