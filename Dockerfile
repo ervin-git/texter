@@ -48,4 +48,4 @@ COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
 COPY ./texter/ ./texter/
 
 ENTRYPOINT ["tini", "--"]
-CMD ["uvicorn", "app.main:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+CMD ["uvicorn", "texter.texter:app", "--proxy-headers", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
